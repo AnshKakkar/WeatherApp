@@ -8,7 +8,6 @@ from rest_framework.views import APIView
 from rest_framework import status
 import requests
 from django.shortcuts import render
-from rest_framework.decorators import api_view
 
 class CityAPIView(APIView):
 
@@ -30,6 +29,7 @@ class CityAPIView(APIView):
 
 def Citysave(request):
     if request.method=="POST":
+        # Gets the value of the name parameter in a POST request
         Cityname1=request.POST.get('Cityname1')
         data1={'city_name':Cityname1}
         Cityname2=request.POST.get('Cityname2')
@@ -40,6 +40,7 @@ def Citysave(request):
         apipath1=requests.post('http://127.0.0.1:8000/city_names/',json=data1, headers=headers)
         apipath2=requests.post('http://127.0.0.1:8000/city_names/',json=data2, headers=headers)
         apipath3=requests.post('http://127.0.0.1:8000/city_names/',json=data3, headers=headers)
-        return render(request,"index.html")
+        return render(request,"preference.html")
+        # http response to send data back
     else:
-        return render(request,"index.html")
+        return render(request,"preference.html")

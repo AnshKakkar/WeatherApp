@@ -21,4 +21,5 @@ urlpatterns = [
     path('',include('Login_Api.urls')),
     path('admin/', admin.site.urls),
     path('',include('Preferences.urls')),
+    path('',include('Weather.urls')),
 ]
