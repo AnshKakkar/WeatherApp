@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Select Preferred Cities</title>
+  </head>
+  <body>
+    <h1>Select your preferred cities</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label>Choose City Preference 1:</label>
+        <select name="Cityname1">
+            <option disabled selected>--Select City--</option>
+            <option>Mumbai</option>
+            <option>Chennai</option>
+            <option>Kolkata</option>
+            <option>Delhi</option>
+            <option>Bangalore</option>
+            <option>Lucknow</option>
+            <option>SriNagar</option>
+            <option>Ahmedabad</option>
+            <option>Hyderabad</option>
+            <option>Ranchi</option>
+        </select></br>
+
+        <label>Choose City Preference 2:</label>
+        <select name="Cityname2">
+            <option disabled selected>--Select City--</option>
+            <option>Mumbai</option>
+            <option>Chennai</option>
+            <option>Kolkata</option>
+            <option>Delhi</option>
+            <option>Bangalore</option>
+            <option>Lucknow</option>
+            <option>SriNagar</option>
+            <option>Ahmedabad</option>
+            <option>Hyderabad</option>
+            <option>Ranchi</option>
+        </select></br>
+
+        <label>Choose City Preference 3:</label>
+        <select name="Cityname3">
+            <option disabled selected>--Select City--</option>
+            <option>Mumbai</option>
+            <option>Chennai</option>
+            <option>Kolkata</option>
+            <option>Delhi</option>
+            <option>Bangalore</option>
+            <option>Lucknow</option>
+            <option>SriNagar</option>
+            <option>Ahmedabad</option>
+            <option>Hyderabad</option>
+            <option>Ranchi</option>
+        </select></br>
+        <input type="submit" value="Insert">
+
+  </body>
+</html>
