@@ -7,7 +7,8 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
 import requests
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+
 
 class CityAPIView(APIView):
 
@@ -40,7 +41,7 @@ def Citysave(request):
         apipath1=requests.post('http://127.0.0.1:8000/city_names/',json=data1, headers=headers)
         apipath2=requests.post('http://127.0.0.1:8000/city_names/',json=data2, headers=headers)
         apipath3=requests.post('http://127.0.0.1:8000/city_names/',json=data3, headers=headers)
-        return render(request,"preference.html")
+        return redirect("/weather/")
         # http response to send data back
     else:
         return render(request,"preference.html")
