@@ -8,3 +8,5 @@ class CityForm(ModelForm):
         widgets = {
             'city_name': TextInput(attrs={'class' : 'input', 'placeholder' : 'City Name'}),
         }
+
+

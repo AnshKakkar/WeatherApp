@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 
 # Create your views here.
 from rest_framework import generics, permissions
@@ -43,11 +43,17 @@ class RegisterAPI(generics.GenericAPIView):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
-        return Response({
+        res=({
         "user": UserSerializer(user, context=self.get_serializer_context()).data,
         # Token.objects.create returns a tuple (instance, token). So in order to get token use the index 1
         "token": AuthToken.objects.create(user)[1]
         })
+        return redirect('/api/login/')
+        # return Response({
+        # "user": UserSerializer(user, context=self.get_serializer_context()).data,
+        # # Token.objects.create returns a tuple (instance, token). So in order to get token use the index 1
+        # "token": AuthToken.objects.create(user)[1]
+        # })
 
 
 class LoginAPI(KnoxLoginView):
@@ -63,3 +69,8 @@ class LoginAPI(KnoxLoginView):
         login(request, user)
         # super denotes parent class(KnoxLoginView) of the current class
         return super(LoginAPI, self).post(request)
+        # return redirect('/city_preference/')
+
+
+
+

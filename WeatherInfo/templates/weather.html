@@ -27,7 +27,7 @@
         <article>
             <div>
                 <figure>
-                    <img src="{{ weather.icon }}" alt="Image">
+                    <img src="http://openweathermap.org/img/w/{{ weather.icon }}.png" alt="Image">
                 </figure>
             </div>
             <div>
@@ -35,7 +35,7 @@
                     <p>
                     <span>City Name: {{ weather.city }}</span>
                         <br>
-                        <span>City Temperature: {{ weather.temperature }}</span>
+                        <span>City Temperature: {{ weather.temperature }}°F</span>
                         <br> 
                         Weather Description: {{ weather.description }}
                     </p>
@@ -43,5 +43,10 @@
             </div>
         </article>
         {% endfor %}
+        <button type="button">
+            <a href="{% url 'login' %}"/>Thank You</button>
+        <button type="button">
+            <a href="{% url 'delete_all' user.username %}"/>Clear Page</button>
+        
 </body>
 </html>
