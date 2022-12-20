@@ -11,11 +11,9 @@ from Preferences.serializers import CitySerializer
 def cityweather(request):
     url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=imperial&appid=83f420865bf8e11581a53634c001adb0'
 
-    cities = Preference.objects.all()
 
     if request.method == 'POST': 
         form = CityForm(request.POST) # add actual request data to form for processing
-        # form.is_valid()
         if form.is_valid():
             city_new=form.cleaned_data['city_name']
             serializer_data = {"city_name": city_new, "account": request.user.id}
@@ -24,10 +22,12 @@ def cityweather(request):
             if serializer.is_valid():
                 serializer.save()
 
-            # form.save()
         # form.save() # will validate and save if validate
-
     form=CityForm()
+
+
+
+    cities = Preference.objects.filter(account=request.user)
     
     weather_data=[]
 
@@ -48,15 +48,15 @@ def cityweather(request):
 
     return render(request, 'weather.html',context) 
 
+
 @api_view(['DELETE'])
 def deleteAll(request, username):
         delcity = Preference.objects.filter(account__username=username)
         delcity.delete()
         return render(request, "thankyou.html") 
 
-# class ArticleDetails(APIView):
 
-#     def delete(self, request, id):
-#         article= self.get_object(id)
-#         article.delete()
-#         return HttpResponse(status=status.HTTP_204_NO_CONTENT)
+# {
+#     "username":"Ansh2511",
+#     "password":"Ansh2511"
+# }

@@ -11,6 +11,9 @@ from django.contrib.auth import login
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from knox.views import LoginView as KnoxLoginView
 
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+
 
 # from .models import Preference
 # from .serializers import CitySerializer
@@ -68,8 +71,8 @@ class LoginAPI(KnoxLoginView):
         user = serializer.validated_data['user']
         login(request, user)
         # super denotes parent class(KnoxLoginView) of the current class
-        return super(LoginAPI, self).post(request)
-        # return redirect('/city_preference/')
+        # return super(LoginAPI, self).post(request)
+        return HttpResponseRedirect('/city_preference/')
 
 
 
