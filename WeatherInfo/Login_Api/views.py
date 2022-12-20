@@ -71,8 +71,8 @@ class LoginAPI(KnoxLoginView):
         user = serializer.validated_data['user']
         login(request, user)
         # super denotes parent class(KnoxLoginView) of the current class
-        # return super(LoginAPI, self).post(request)
-        return HttpResponseRedirect('/city_preference/')
+        return super(LoginAPI, self).post(request)
+        # return HttpResponseRedirect('/city_preference/')
 
 
 
